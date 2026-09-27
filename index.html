@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <!-- Input -->
+        <div class="input-card">
+          <input type="text" class="input" readonly id="inputValue" />
+        </div>
+
+        <!-- Buttons -->
+        <div class="card-container">
+          <!-- Row 1 -->
+          <div class="first-card">
+            <button class="clear-btn" onclick="clearDisplay()">C</button>
+            <button class="delete-btn" onclick="deleteNumber()">DEL</button>
+            <button class="operator" onclick="percentage()">%</button>
+            <button class="operator" onclick="operation('/')">÷</button>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="first-card">
+            <button onclick="number('7')">7</button>
+            <button onclick="number('8')">8</button>
+            <button onclick="number('9')">9</button>
+            <button class="operator" onclick="operation('*')">×</button>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="first-card">
+            <button onclick="number('4')">4</button>
+            <button onclick="number('5')">5</button>
+            <button onclick="number('6')">6</button>
+            <button class="operator" onclick="operation('-')">−</button>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="first-card">
+            <button onclick="number('1')">1</button>
+            <button onclick="number('2')">2</button>
+            <button onclick="number('3')">3</button>
+            <button class="operator" onclick="operation('+')">+</button>
+          </div>
+
+          <!-- Row 5 -->
+          <div class="first-card">
+            <button onclick="number('0')">0</button>
+            <button onclick="decimal()">.</button>
+            <button class="equal" onclick="calculate()">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
