@@ -1,128 +1,83 @@
 let inputValue = document.getElementById("inputValue");
 
-let num1 = "";
-let operator = "";
-let num2 = "";
+let expression = "";
 
 
 // Number
 function number(value) {
-
-    if (operator === "") {
-        num1 += value;
-    }
-    else {
-        num2 += value;
-    }
-
-    inputValue.value = num1 + operator + num2;
+    expression += value;
+    inputValue.value = expression;
 }
 
 
 // Operator
 function operation(value) {
 
-    // First operator
-    if (num1 !== "" && num2 === "") {
-        operator = value;
+    if (expression === "") {
+        return;
     }
 
-    inputValue.value = num1 + operator + num2;
+    expression += value;
+    inputValue.value = expression;
 }
 
 
 // Calculate
 function calculate() {
 
-    let a = Number(num1);
-    let b = Number(num2);
-    let result;
-
-    switch (operator) {
-
-        case "+":
-            result = a + b;
-            break;
-
-        case "-":
-            result = a - b;
-            break;
-
-        case "*":
-            result = a * b;
-            break;
-
-        case "/":
-            result = a / b;
-            break;
-
-        default:
-            return;
+    if (expression === "") {
+        return;
     }
 
-    inputValue.value = result;
+    try {
+        let result = eval(expression);
 
-    num1 = String(result);
-    operator = "";
-    num2 = "";
+        inputValue.value = result;
+
+        expression = String(result);
+
+    } catch {
+        inputValue.value = "Error";
+        expression = "";
+    }
 }
 
 
 // Delete
 function deleteNumber() {
 
-    if (operator === "") {
-        num1 = num1.slice(0, -1);
-    }
-    else {
-        num2 = num2.slice(0, -1);
-    }
+    expression = expression.slice(0, -1);
 
-    inputValue.value = num1 + operator + num2;
+    inputValue.value = expression;
 }
 
 
 // Clear
 function clearDisplay() {
 
-    inputValue.value = "";
+    expression = "";
 
-    num1 = "";
-    operator = "";
-    num2 = "";
+    inputValue.value = "";
 }
 
 
 // Percentage
 function percentage() {
 
-    if (operator === "") {
-        num1 = String(Number(num1) / 100);
-    }
-    else {
-        num2 = String(Number(num2) / 100);
+    if (expression === "") {
+        return;
     }
 
-    inputValue.value = num1 + operator + num2;
+    expression = String(eval(expression) / 100);
+
+    inputValue.value = expression;
 }
 
 
 // Decimal
 function decimal() {
 
-    if (operator === "") {
+    expression += ".";
 
-        if (!num1.includes(".")) {
-            num1 += ".";
-        }
-
-    }
-    else {
-
-        if (!num2.includes(".")) {
-            num2 += ".";
-        }
-    }
-
-    inputValue.value = num1 + operator + num2;
+    inputValue.value = expression;
 }
